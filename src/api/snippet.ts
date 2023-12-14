@@ -29,3 +29,14 @@ export const apiSaveSnippet = (params: { snippetId: string; content: string }, t
         },
     });
 };
+
+/** 保存代码片段 */
+export const apiChatapiTransform = (params: { content: string }) => {
+    return http.post<{ data: string }>({
+        url: 'https://maker.weizhipin.com/maker/napi/public/chatgpt/transform',
+        params,
+        // headers: {
+        //     t_maker: token,
+        // },
+    });
+};

@@ -2,7 +2,7 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import { createSnippet, saveSnippet } from './command/createSnippet';
-import { chatgpt } from './command/chatgpt';
+import { chatgpt, generateCode } from './command/chatgpt';
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -24,8 +24,11 @@ export function activate(context: vscode.ExtensionContext) {
     const disposable4 = vscode.commands.registerCommand('chatgpt.transform', (uri: vscode.Uri) => {
         chatgpt();
     });
+    const disposable5 = vscode.commands.registerCommand('chatgpt.generate', (uri: vscode.Uri) => {
+        generateCode();
+    });
 
-    context.subscriptions.push(disposable2, disposable3, disposable4);
+    context.subscriptions.push(disposable2, disposable3, disposable4, disposable5);
 }
 
 // This method is called when your extension is deactivated
