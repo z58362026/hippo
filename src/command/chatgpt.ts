@@ -1,6 +1,7 @@
 import * as vscode from 'vscode';
 import { apiChatapiTransform } from '../api/snippet';
 import { FunctionModelHandle, addNotesModel, generateFunction, transformText } from '../modules/chatgpt';
+import { eliminateCodeBlock } from '../modules/chatgpt/parse';
 export const chatgpt = async () => {
     const editor = vscode.window.activeTextEditor;
 
@@ -31,6 +32,7 @@ export const chatgpt = async () => {
         vscode.window.showInformationMessage('Selected code commented!');
     }
 };
+/** 代码生成 */
 export const generateCode = async () => {
     const editor = vscode.window.activeTextEditor;
 
@@ -46,13 +48,14 @@ export const generateCode = async () => {
 
         const FnTransfrom = transformText(FunctionModelHandle, generateFunction);
         const content = FnTransfrom(currentLineText);
+
         const res = await apiChatapiTransform({ content });
         // 添加注释
         const conent = `${res.data}\n`;
         // 在下一行插入内容
         const newPosition = new vscode.Position(currentLine + 2, 0);
         editor.edit((editBuilder) => {
-            editBuilder.insert(newPosition, conent);
+            editBuilder.insert(newPosition, eliminateCodeBlock(conent));
         });
 
         // 将光标移动到插入的位置
