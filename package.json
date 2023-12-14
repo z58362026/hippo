@@ -11,7 +11,7 @@
     ],
     "publisher": "wangming",
     "repository": "https://github.com/z58362026/hippo.git",
-    "icon": "src/assets/logo.jpg",
+    "icon": "logo.jpg",
     "activationEvents": [],
     "main": "./dist/extension.js",
     "contributes": {
