@@ -20,6 +20,10 @@
             {
                 "command": "createSnippet",
                 "title": "create snippets"
+            },
+            {
+                "command": "chatgpt.transform",
+                "title": "chatgpt transforms"
             }
         ],
         "menus": {
@@ -29,8 +33,22 @@
                     "group": "1_modification",
                     "when": "explorerResourceIsFolder && resourceFilename =~ /.vscode/"
                 }
+            ],
+            "editor/title": [
+                {
+                    "command": "chatgpt.transform",
+                    "group": "1_modification"
+                }
             ]
-        }
+        },
+        "keybindings": [
+            {
+                "command": "chatgpt.transform",
+                "key": "ctrl+.",
+                "mac": "cmd+.",
+                "when": "editorTextFocus"
+            }
+        ]
     },
     "scripts": {
         "vscode:prepublish": "npm run package",
