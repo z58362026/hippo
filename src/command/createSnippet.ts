@@ -26,7 +26,8 @@ export const createSnippet = async (uri: vscode.Uri) => {
 };
 
 // TODO 后期可以保存到全局
-let token = '3f6Zu9BXj0D44765QsP2pY';
+let token = '';
+// let token = '3f6Zu9BXj0D44765QsP2pY';
 export const saveSnippet = async (uri: vscode.Uri) => {
     if (!token) {
         const value = await vscode.window.showInputBox({
