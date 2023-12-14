@@ -2,13 +2,13 @@ import * as vscode from 'vscode';
 import { readdir, writeFile } from 'fs';
 import { join } from 'path';
 import { promisify } from 'util';
-import { getSnippetDetail } from '../../api/snippet';
+import { apiSnippetDetail } from '../../api/snippet';
 import { pinyin, convert } from 'pinyin-pro';
 
 const indexFileExt = '.code-snippets';
 
 export async function genIndex(dir: string, snippetId: string) {
-    const res = await getSnippetDetail({ snippetId });
+    const res = await apiSnippetDetail({ snippetId });
 
     // 得到目录下所有文件名集合
     const result = await promisify(readdir)(dir);

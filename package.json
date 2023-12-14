@@ -14,12 +14,12 @@
     "contributes": {
         "commands": [
             {
-                "command": "hippo.helloWorld",
-                "title": "Hello World"
+                "command": "snippet.create",
+                "title": "create snippets"
             },
             {
-                "command": "createSnippet",
-                "title": "create snippets"
+                "command": "snippet.save",
+                "title": "save snippets"
             },
             {
                 "command": "chatgpt.transform",
@@ -29,9 +29,14 @@
         "menus": {
             "explorer/context": [
                 {
-                    "command": "createSnippet",
+                    "command": "snippet.create",
                     "group": "1_modification",
                     "when": "explorerResourceIsFolder && resourceFilename =~ /.vscode/"
+                },
+                {
+                    "command": "snippet.save",
+                    "group": "1_modification",
+                    "when": "resourceFilename =~ /\\.code-snippets$/"
                 }
             ],
             "editor/title": [

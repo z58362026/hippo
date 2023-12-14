@@ -1,7 +1,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
-import { createSnippet } from './command/createSnippet';
+import { createSnippet, saveSnippet } from './command/createSnippet';
 import { chatgpt } from './command/chatgpt';
 
 // This method is called when your extension is activated
@@ -14,19 +14,18 @@ export function activate(context: vscode.ExtensionContext) {
     // The command has been defined in the package.json file
     // Now provide the implementation of the command with registerCommand
     // The commandId parameter must match the command field in package.json
-    let disposable = vscode.commands.registerCommand('hippo.helloWorld', () => {
-        // The code you place here will be executed every time your command is executed
-        // Display a message box to the user
-        vscode.window.showInformationMessage('Hello World from hippo!');
-    });
-    const disposable2 = vscode.commands.registerCommand('createSnippet', (uri: vscode.Uri) => {
+
+    const disposable2 = vscode.commands.registerCommand('snippet.create', (uri: vscode.Uri) => {
         createSnippet(uri);
     });
-    const disposable3 = vscode.commands.registerCommand('chatgpt.transform', (uri: vscode.Uri) => {
+    const disposable3 = vscode.commands.registerCommand('snippet.save', (uri: vscode.Uri) => {
+        saveSnippet(uri);
+    });
+    const disposable4 = vscode.commands.registerCommand('chatgpt.transform', (uri: vscode.Uri) => {
         chatgpt();
     });
 
-    context.subscriptions.push(disposable, disposable2, disposable3);
+    context.subscriptions.push(disposable2, disposable3, disposable4);
 }
 
 // This method is called when your extension is deactivated
