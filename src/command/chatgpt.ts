@@ -1,6 +1,12 @@
 import * as vscode from 'vscode';
 import { apiChatapiTransform } from '../api/snippet';
-import { FunctionModelHandle, addNotesModel, generateFunction, transformText } from '../modules/chatgpt';
+import {
+    FunctionModelHandle,
+    addNotesModel,
+    generateFunction,
+    optimizationFunction,
+    transformText,
+} from '../modules/chatgpt';
 import { eliminateCodeBlock } from '../modules/chatgpt/parse';
 export const chatgpt = async () => {
     const editor = vscode.window.activeTextEditor;
@@ -32,7 +38,35 @@ export const chatgpt = async () => {
         vscode.window.showInformationMessage('Selected code commented!');
     }
 };
-/** 代码生成 */
+/** 代码优化 */
+export const optimizationCode = async () => {
+    const editor = vscode.window.activeTextEditor;
+
+    if (editor) {
+        // 获取选中的文本范围
+        const selection = editor.selection;
+        const selectedText = editor.document.getText(selection);
+
+        const FnTransfrom = transformText(FunctionModelHandle, optimizationFunction);
+
+        const content = FnTransfrom(selectedText);
+        vscode.window.showInformationMessage('解析中');
+        const res = await apiChatapiTransform({ content });
+        // 添加注释
+        const commentedText = `${res.data}\n`;
+        // 插入到文档中
+        editor.edit((editBuilder) => {
+            editBuilder.insert(selection.end, `\n${eliminateCodeBlock(commentedText)}`);
+        });
+
+        // 移动光标到注释的末尾
+        const newPosition = selection.start.translate(commentedText.split('\n').length - 1);
+        editor.selection = new vscode.Selection(newPosition, newPosition);
+
+        // 提示用户插入成功
+        vscode.window.showInformationMessage('Selected code commented!');
+    }
+};
 export const generateCode = async () => {
     const editor = vscode.window.activeTextEditor;
 

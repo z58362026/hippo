@@ -25,12 +25,16 @@
                 "title": "save snippets"
             },
             {
-                "command": "chatgpt.transform",
-                "title": "chatgpt transforms"
+                "command": "chatgpt.comment",
+                "title": "chatgpt comment"
             },
             {
                 "command": "chatgpt.generate",
                 "title": "chatgpt generate"
+            },
+            {
+                "command": "chatgpt.optimization",
+                "title": "chatgpt optimization"
             }
         ],
         "menus": {
@@ -48,22 +52,28 @@
             ],
             "editor/title": [
                 {
-                    "command": "chatgpt.transform",
+                    "command": "chatgpt.comment",
                     "group": "1_modification"
                 }
             ]
         },
         "keybindings": [
             {
-                "command": "chatgpt.transform",
-                "key": "ctrl+.",
-                "mac": "cmd+.",
+                "command": "chatgpt.comment",
+                "key": "ctrl+t",
+                "mac": "cmd+t",
                 "when": "editorTextFocus"
             },
             {
                 "command": "chatgpt.generate",
-                "key": "ctrl+l",
-                "mac": "cmd+l",
+                "key": "ctrl+g",
+                "mac": "cmd+g",
+                "when": "editorTextFocus"
+            },
+            {
+                "command": "chatgpt.optimization",
+                "key": "ctrl+o",
+                "mac": "cmd+o",
                 "when": "editorTextFocus"
             }
         ]
