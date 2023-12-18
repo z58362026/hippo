@@ -12,9 +12,29 @@
     "publisher": "wangming",
     "repository": "https://github.com/z58362026/hippo.git",
     "icon": "logo.jpg",
-    "activationEvents": [],
+    "activationEvents": [
+        "onView:sidebar_hippo"
+    ],
     "main": "./dist/extension.js",
     "contributes": {
+        "viewsContainers": {
+            "activitybar": [
+                {
+                    "id": "sidebar_hippo",
+                    "title": "hippo",
+                    "icon": "logo.svg"
+                }
+            ]
+        },
+        "views": {
+            "sidebar_hippo": [
+                {
+                    "id": "Chat-sidebar",
+                    "name": "搜索区",
+                    "type": "webview"
+                }
+            ]
+        },
         "commands": [
             {
                 "command": "snippet.create",
