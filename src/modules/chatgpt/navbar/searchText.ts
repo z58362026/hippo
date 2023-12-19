@@ -77,7 +77,9 @@ export class ChatWebview implements WebviewViewProvider {
 
      </script>
         <div class="outer">
-           <iframe id='WebviewIframe' class="webView_iframe" sandbox="allow-scripts allow-same-origin allow-forms allow-pointer-lock allow-downloads" allow="cross-origin-isolated; clipboard-read; clipboard-write;" src="https://maker.weizhipin.com/maker/chatgpt"></iframe>
+           <iframe id='WebviewIframe' class="webView_iframe" sandbox="allow-scripts allow-same-origin allow-forms allow-pointer-lock allow-downloads" allow="cross-origin-isolated; clipboard-read; clipboard-write;" src="https://maker.weizhipin.com/maker/chatgpt?random=${Math.random()
+               .toString(36)
+               .substring(7)}"></iframe>
         </div>
     </body>
     </html>
