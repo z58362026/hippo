@@ -38,11 +38,11 @@
         "commands": [
             {
                 "command": "snippet.create",
-                "title": "create snippets"
+                "title": "创建代码片段"
             },
             {
                 "command": "snippet.save",
-                "title": "save snippets"
+                "title": "保存代码文件"
             },
             {
                 "command": "chatgpt.comment",
@@ -78,7 +78,8 @@
             "view/title": [
                 {
                     "command": "chatgpt.refresh",
-                    "group": "navigation@-3"
+                    "group": "navigation@-3",
+                    "when": "view == 'Chat-sidebar'"
                 }
             ],
             "editor/context": [

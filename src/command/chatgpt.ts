@@ -7,7 +7,7 @@ import {
     optimizationFunction,
     transformText,
 } from '../modules/chatgpt';
-import { eliminateCodeBlock } from '../modules/chatgpt/parse';
+import { addCommentIdentifier, eliminateCodeBlock } from '../modules/chatgpt/parse';
 export const chatgpt = async () => {
     const editor = vscode.window.activeTextEditor;
 
@@ -24,7 +24,7 @@ export const chatgpt = async () => {
         vscode.window.showInformationMessage('解析中');
         const res = await apiChatapiTransform({ content });
         // 添加注释
-        const commentedText = `${res.data}\n`;
+        const commentedText = `${addCommentIdentifier(res.data)}\n`;
         // 插入到文档中
         editor.edit((editBuilder) => {
             editBuilder.insert(selection.start, commentedText);
