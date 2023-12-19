@@ -30,7 +30,7 @@
             "sidebar_hippo": [
                 {
                     "id": "Chat-sidebar",
-                    "name": "搜索区",
+                    "name": "hippo",
                     "type": "webview"
                 }
             ]
@@ -46,15 +46,20 @@
             },
             {
                 "command": "chatgpt.comment",
-                "title": "chatgpt comment"
+                "title": "hippo代码注释"
             },
             {
                 "command": "chatgpt.generate",
-                "title": "chatgpt generate"
+                "title": "hippo代码生成"
             },
             {
                 "command": "chatgpt.optimization",
-                "title": "chatgpt optimization"
+                "title": "hippo代码优化"
+            },
+            {
+                "command": "chatgpt.refresh",
+                "title": "chatgpt.optimization",
+                "icon": "logo.jpg"
             }
         ],
         "menus": {
@@ -70,10 +75,24 @@
                     "when": "resourceFilename =~ /\\.code-snippets$/"
                 }
             ],
-            "editor/title": [
+            "view/title": [
+                {
+                    "command": "chatgpt.refresh",
+                    "group": "navigation@-3"
+                }
+            ],
+            "editor/context": [
+                {
+                    "command": "chatgpt.optimization",
+                    "group": "navigation@-3"
+                },
+                {
+                    "command": "chatgpt.generate",
+                    "group": "navigation@-3"
+                },
                 {
                     "command": "chatgpt.comment",
-                    "group": "1_modification"
+                    "group": "navigation@-3"
                 }
             ]
         },

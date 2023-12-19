@@ -36,7 +36,7 @@ export function activate(context: vscode.ExtensionContext) {
     vscode.window.registerWebviewViewProvider('Chat-sidebar', chatWebview, {
         webviewOptions: {
             // 这是一个比较有用的配置项，可以确保你的插件在不可见时不会被销毁，建议开启，否侧每次打开都会重新加载一次插件
-            retainContextWhenHidden: true,
+            // retainContextWhenHidden: true,
         },
     });
     // 这里实现了一个简单的功能，在vscode打开的文件中，选中代码时会实时展示在web页面上
@@ -55,7 +55,14 @@ export function activate(context: vscode.ExtensionContext) {
         });
     });
 
-    context.subscriptions.push(disposable2, disposable3, disposable4, disposable5, disposable6);
+    const disposable7 = vscode.commands.registerCommand('chatgpt.refresh', () => {
+        chatWebview?.webview?.webview.postMessage({
+            // 第一次postMessage，下一次在chatWebview文件的iframe中
+            command: 'refreshIframe',
+        });
+    });
+
+    context.subscriptions.push(disposable2, disposable3, disposable4, disposable5, disposable6, disposable7);
 }
 
 // This method is called when your extension is deactivated
