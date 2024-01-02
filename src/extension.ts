@@ -54,7 +54,6 @@ export function activate(context: vscode.ExtensionContext) {
             data: text,
         });
     });
-
     const disposable7 = vscode.commands.registerCommand('chatgpt.refresh', () => {
         chatWebview?.webview?.webview.postMessage({
             // 第一次postMessage，下一次在chatWebview文件的iframe中

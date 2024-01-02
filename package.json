@@ -96,27 +96,7 @@
                     "group": "navigation@-3"
                 }
             ]
-        },
-        "keybindings": [
-            {
-                "command": "chatgpt.comment",
-                "key": "ctrl+t",
-                "mac": "cmd+t",
-                "when": "editorTextFocus"
-            },
-            {
-                "command": "chatgpt.generate",
-                "key": "ctrl+g",
-                "mac": "cmd+g",
-                "when": "editorTextFocus"
-            },
-            {
-                "command": "chatgpt.optimization",
-                "key": "ctrl+o",
-                "mac": "cmd+o",
-                "when": "editorTextFocus"
-            }
-        ]
+        }
     },
     "scripts": {
         "vscode:prepublish": "npm run package",
